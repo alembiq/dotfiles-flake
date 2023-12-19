@@ -37,3 +37,10 @@ to
   networking.hostName = "myHost";
 
 End.
+
+
+Rebuild to new flake 
+
+nixos-rebuild switch --flake .#myHost
+
+Done.
