@@ -36,11 +36,27 @@ to
 
   networking.hostName = "myHost";
 
+Commit changes.
+Change current working directory to the root of git repo, then execute:
+
+  git add .
+  git commit --all --sign-off --message "Update host name"
+
+Apply changes, now.
+
+  nixos-rebuild switch --flake .#myHost
+
+Alternatively, apply changes upon next reboot
+
+  nixos-rebuild boot --flake .#myHost
+
+Instead of using relative path, you can use flake uri:
+
+  nixos-rebuild boot --flake "git+file:///etc/nixos#exampleHost"
+                                       ^^^ three slashes in total, where the first two are
+                                           part of the uri scheme, the third slash is part of the
+                                           filesystem path.
+
+                              "git+https://github.com/user-name/my-dot-files"
+
 End.
-
-
-Rebuild to new flake 
-
-nixos-rebuild switch --flake .#myHost
-
-Done.
